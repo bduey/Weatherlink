@@ -3,7 +3,7 @@ View weather data in Splunk
 ## Description
 This contains everything required to get weather data from a local Weatherlink device and write it to a file so it can be ingested into Splunk. 
 ### Dependencies
-* Working Splunk install [Download from here](https://www.splunk.com)
+* Working Splunk install [Download free version](https://www.splunk.com)
 * Davis Weather Station that is compatible with WeatherLink
 ### Install
 1. Copy [get_weatherlink_data.sh](https://github.com/bduey/Weatherlink/blob/main/get_weatherlink_data.sh) to your linux host.
