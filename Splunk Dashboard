@@ -1,369 +1,404 @@
 <dashboard theme="dark">
-  <label>Home Weather</label>
+  <label>Weather-Current</label>
+  <description>Current and Daily weather conditions</description>
   <row>
     <panel>
-      <title>Current Temperature</title>
       <single>
-        <title>Outside</title>
         <search>
-          <query>index=weather | fields + "data.conditions{}.temp"</query>
+          <query>index=weather| top limit=1 "data.conditions{}.temp"</query>
           <earliest>-2m</earliest>
           <latest>now</latest>
+          <sampleRatio>1</sampleRatio>
           <refresh>2m</refresh>
           <refreshType>delay</refreshType>
         </search>
         <option name="colorBy">value</option>
         <option name="colorMode">none</option>
         <option name="drilldown">none</option>
-        <option name="linkView">search</option>
         <option name="numberPrecision">0.0</option>
-        <option name="rangeColors">["0x006d9c","0x006d9c","0x006d9c"]</option>
-        <option name="rangeValues">[32,100]</option>
+        <option name="rangeColors">["0x32a89d","0x006d9c","0xf8be34","0xf1813f","0xdc4e41"]</option>
+        <option name="rangeValues">[32,100,105,122]</option>
         <option name="refresh.display">progressbar</option>
         <option name="showSparkline">0</option>
-        <option name="showTrendIndicator">1</option>
-        <option name="trendColorInterpretation">inverse</option>
+        <option name="showTrendIndicator">0</option>
+        <option name="trellis.enabled">0</option>
+        <option name="trellis.scales.shared">1</option>
+        <option name="trellis.size">medium</option>
+        <option name="trendColorInterpretation">standard</option>
         <option name="trendDisplayMode">absolute</option>
-        <option name="trendInterval">-1h</option>
-        <option name="useColors">0</option>
+        <option name="underLabel">Current Temp</option>
+        <option name="unit">F</option>
+        <option name="unitPosition">after</option>
+        <option name="useColors">1</option>
         <option name="useThousandSeparators">1</option>
       </single>
     </panel>
     <panel>
-      <title>Current Temperature</title>
       <single>
-        <title>Inside</title>
         <search>
-          <query>index=weather | fields + "data.conditions{}.temp_in"</query>
+          <query>index=weather| top limit=1 "data.conditions{}.hum"</query>
           <earliest>-2m</earliest>
           <latest>now</latest>
+          <sampleRatio>1</sampleRatio>
           <refresh>2m</refresh>
           <refreshType>delay</refreshType>
         </search>
         <option name="colorBy">value</option>
         <option name="colorMode">none</option>
         <option name="drilldown">none</option>
-        <option name="linkView">search</option>
-        <option name="numberPrecision">0.0</option>
-        <option name="rangeColors">["0x65a637","0x6db7c6","0xf7bc38","0xf58f39","0xd93f3c"]</option>
-        <option name="rangeValues">[0,30,70,100]</option>
+        <option name="numberPrecision">0</option>
+        <option name="rangeColors">["0x006d9c","0xdc4e41"]</option>
+        <option name="rangeValues">[100]</option>
         <option name="refresh.display">progressbar</option>
         <option name="showSparkline">0</option>
-        <option name="showTrendIndicator">1</option>
+        <option name="showTrendIndicator">0</option>
+        <option name="trellis.enabled">0</option>
+        <option name="trellis.scales.shared">1</option>
+        <option name="trellis.size">medium</option>
         <option name="trendColorInterpretation">standard</option>
         <option name="trendDisplayMode">absolute</option>
-        <option name="trendInterval">-1h</option>
-        <option name="useColors">0</option>
+        <option name="underLabel">Current Humidity</option>
+        <option name="unit">%</option>
+        <option name="unitPosition">after</option>
+        <option name="useColors">1</option>
         <option name="useThousandSeparators">1</option>
       </single>
     </panel>
     <panel>
-      <title>Current Barometric Pressure</title>
       <single>
         <search>
-          <query>index=weather | fields + "data.conditions{}.bar_absolute"</query>
+          <query>index=weather| top limit=1 "data.conditions{}.dew_point"</query>
           <earliest>-2m</earliest>
           <latest>now</latest>
+          <sampleRatio>1</sampleRatio>
           <refresh>2m</refresh>
           <refreshType>delay</refreshType>
         </search>
         <option name="colorBy">value</option>
         <option name="colorMode">none</option>
         <option name="drilldown">none</option>
-        <option name="linkView">search</option>
-        <option name="numberPrecision">0.000</option>
-        <option name="rangeColors">["0x65a637","0x6db7c6","0xf7bc38","0xf58f39","0xd93f3c"]</option>
-        <option name="rangeValues">[0,30,70,100]</option>
+        <option name="numberPrecision">0.0</option>
+        <option name="rangeColors">["0x006d9c","0xdc4e41"]</option>
+        <option name="rangeValues">[200]</option>
+        <option name="refresh.display">progressbar</option>
+        <option name="showSparkline">0</option>
+        <option name="showTrendIndicator">0</option>
+        <option name="trellis.enabled">0</option>
+        <option name="trellis.scales.shared">1</option>
+        <option name="trellis.size">medium</option>
+        <option name="trendColorInterpretation">standard</option>
+        <option name="trendDisplayMode">absolute</option>
+        <option name="underLabel">Current Dew Point</option>
+        <option name="unit">F</option>
+        <option name="unitPosition">after</option>
+        <option name="useColors">1</option>
+        <option name="useThousandSeparators">1</option>
+      </single>
+    </panel>
+    <panel>
+      <single>
+        <search>
+          <query>index=weather| top limit=1 "data.conditions{}.bar_absolute"</query>
+          <earliest>-2m</earliest>
+          <latest>now</latest>
+          <sampleRatio>1</sampleRatio>
+          <refresh>2m</refresh>
+          <refreshType>delay</refreshType>
+        </search>
+        <option name="colorBy">value</option>
+        <option name="colorMode">none</option>
+        <option name="drilldown">none</option>
+        <option name="numberPrecision">0.00</option>
+        <option name="rangeColors">["0x006d9c","0xdc4e41"]</option>
+        <option name="rangeValues">[500]</option>
         <option name="refresh.display">progressbar</option>
         <option name="showSparkline">0</option>
         <option name="showTrendIndicator">1</option>
+        <option name="trellis.enabled">0</option>
+        <option name="trellis.scales.shared">1</option>
+        <option name="trellis.size">medium</option>
         <option name="trendColorInterpretation">standard</option>
-        <option name="trendDisplayMode">absolute</option>
+        <option name="trendDisplayMode">percent</option>
         <option name="trendInterval">-1h</option>
+        <option name="underLabel">Current Barometric Pressure</option>
         <option name="unit">"</option>
-        <option name="useColors">0</option>
+        <option name="unitPosition">after</option>
+        <option name="useColors">1</option>
+        <option name="useThousandSeparators">1</option>
+      </single>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <single>
+        <search>
+          <query>index=weather| top limit=1 "data.conditions{}.wind_chill"</query>
+          <earliest>-2m@m</earliest>
+          <latest>now</latest>
+          <sampleRatio>1</sampleRatio>
+          <refresh>2m</refresh>
+          <refreshType>delay</refreshType>
+        </search>
+        <option name="colorBy">value</option>
+        <option name="colorMode">none</option>
+        <option name="drilldown">none</option>
+        <option name="numberPrecision">0.0</option>
+        <option name="rangeColors">["0x32a89d","0x0877a6","0xf8be34","0xf1813f","0xdc4e41"]</option>
+        <option name="rangeValues">[32,100,105,122]</option>
+        <option name="refresh.display">progressbar</option>
+        <option name="showSparkline">0</option>
+        <option name="showTrendIndicator">0</option>
+        <option name="trellis.enabled">0</option>
+        <option name="trellis.scales.shared">1</option>
+        <option name="trellis.size">medium</option>
+        <option name="trendColorInterpretation">standard</option>
+        <option name="trendDisplayMode">absolute</option>
+        <option name="underLabel">Current Wind Chill</option>
+        <option name="unit">F</option>
+        <option name="unitPosition">after</option>
+        <option name="useColors">1</option>
         <option name="useThousandSeparators">1</option>
       </single>
     </panel>
     <panel>
-      <title>Current Wind</title>
       <single>
-        <title>Speed</title>
         <search>
-          <query>index=weather | fields +  "data.conditions{}.wind_speed_avg_last_2_min"</query>
+          <query>index=weather| timechart avg("data.conditions{}.wind_speed_last")</query>
+          <earliest>-1h</earliest>
+          <latest>now</latest>
+          <sampleRatio>1</sampleRatio>
+          <refresh>2m</refresh>
+          <refreshType>delay</refreshType>
+        </search>
+        <option name="colorBy">value</option>
+        <option name="colorMode">none</option>
+        <option name="drilldown">none</option>
+        <option name="numberPrecision">0.0</option>
+        <option name="rangeColors">["0x006d9c","0x006d9c"]</option>
+        <option name="rangeValues">[46]</option>
+        <option name="refresh.display">progressbar</option>
+        <option name="showSparkline">0</option>
+        <option name="showTrendIndicator">0</option>
+        <option name="trellis.enabled">0</option>
+        <option name="trellis.scales.shared">1</option>
+        <option name="trellis.size">medium</option>
+        <option name="trendColorInterpretation">standard</option>
+        <option name="trendDisplayMode">absolute</option>
+        <option name="underLabel">Current Wind Speed</option>
+        <option name="unit">mph</option>
+        <option name="unitPosition">after</option>
+        <option name="useColors">1</option>
+        <option name="useThousandSeparators">1</option>
+      </single>
+    </panel>
+    <panel>
+      <single>
+        <search>
+          <query>index=weather "data.conditions{}.wind_dir_at_hi_speed_last_10_min"&gt;0 | timechart avg("data.conditions{}.wind_dir_at_hi_speed_last_10_min")</query>
+          <earliest>-15m</earliest>
+          <latest>now</latest>
+          <sampleRatio>1</sampleRatio>
+          <refresh>2m</refresh>
+          <refreshType>delay</refreshType>
+        </search>
+        <option name="colorBy">value</option>
+        <option name="colorMode">none</option>
+        <option name="drilldown">none</option>
+        <option name="numberPrecision">0</option>
+        <option name="rangeColors">["0x006d9c","0x006d9c"]</option>
+        <option name="rangeValues">[150]</option>
+        <option name="refresh.display">progressbar</option>
+        <option name="showSparkline">0</option>
+        <option name="showTrendIndicator">0</option>
+        <option name="trellis.enabled">0</option>
+        <option name="trellis.scales.shared">1</option>
+        <option name="trellis.size">medium</option>
+        <option name="trendColorInterpretation">standard</option>
+        <option name="trendDisplayMode">absolute</option>
+        <option name="underLabel">Current Wind Direction</option>
+        <option name="unitPosition">after</option>
+        <option name="useColors">1</option>
+        <option name="useThousandSeparators">1</option>
+      </single>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <single>
+        <search>
+          <query>index=weather "data.conditions{}.temp"!=null AND "data.conditions{}.temp"&lt;=130 | stats max("data.conditions{}.temp") by _time |sort - "max("data.conditions{}.temp")" | head 1</query>
+          <earliest>@d</earliest>
+          <latest>now</latest>
+          <sampleRatio>1</sampleRatio>
+          <refresh>2m</refresh>
+          <refreshType>delay</refreshType>
+        </search>
+        <option name="colorBy">value</option>
+        <option name="colorMode">none</option>
+        <option name="drilldown">none</option>
+        <option name="numberPrecision">0.0</option>
+        <option name="rangeColors">["0x32a89d","0x0877a6","0xf8be34","0xf1813f","0xdc4e41"]</option>
+        <option name="rangeValues">[32,100,105,122]</option>
+        <option name="refresh.display">progressbar</option>
+        <option name="showSparkline">0</option>
+        <option name="showTrendIndicator">0</option>
+        <option name="trellis.enabled">0</option>
+        <option name="trellis.scales.shared">1</option>
+        <option name="trellis.size">medium</option>
+        <option name="trendColorInterpretation">standard</option>
+        <option name="trendDisplayMode">absolute</option>
+        <option name="underLabel">Daily High Temp</option>
+        <option name="unit">F</option>
+        <option name="unitPosition">after</option>
+        <option name="useColors">1</option>
+        <option name="useThousandSeparators">1</option>
+      </single>
+    </panel>
+    <panel>
+      <single>
+        <search>
+          <query>index=weather "data.conditions{}.temp"!=null AND "data.conditions{}.temp"&gt;0 | stats max("data.conditions{}.temp") by _time |sort "max("data.conditions{}.temp")" | head 1</query>
+          <earliest>@d</earliest>
+          <latest>now</latest>
+          <sampleRatio>1</sampleRatio>
+          <refresh>2m</refresh>
+          <refreshType>delay</refreshType>
+        </search>
+        <option name="drilldown">none</option>
+        <option name="numberPrecision">0.0</option>
+        <option name="rangeColors">["0x32a89d","0x006d9c","0xf8be34","0xf1813f","0xdc4e41"]</option>
+        <option name="rangeValues">[32,100,105,122]</option>
+        <option name="refresh.display">progressbar</option>
+        <option name="showSparkline">0</option>
+        <option name="showTrendIndicator">0</option>
+        <option name="trellis.enabled">0</option>
+        <option name="underLabel">Daily Low Temp</option>
+        <option name="unit">F</option>
+        <option name="useColors">1</option>
+      </single>
+    </panel>
+    <panel>
+      <single>
+        <search>
+          <query>index=weather "data.conditions{}.wind_speed_last"!=null AND "data.conditions{}.temp"&gt;0 | stats max("data.conditions{}.wind_speed_last") by _time |sort - "max("data.conditions{}.wind_speed_last")" | head 1</query>
+          <earliest>@d</earliest>
+          <latest>now</latest>
+          <sampleRatio>1</sampleRatio>
+          <refresh>2m</refresh>
+          <refreshType>delay</refreshType>
+        </search>
+        <option name="colorBy">value</option>
+        <option name="colorMode">none</option>
+        <option name="drilldown">none</option>
+        <option name="numberPrecision">0.0</option>
+        <option name="rangeColors">["0x006d9c","0xf1813f"]</option>
+        <option name="rangeValues">[46]</option>
+        <option name="refresh.display">progressbar</option>
+        <option name="showSparkline">0</option>
+        <option name="showTrendIndicator">0</option>
+        <option name="trellis.enabled">0</option>
+        <option name="trellis.scales.shared">1</option>
+        <option name="trellis.size">medium</option>
+        <option name="trendColorInterpretation">standard</option>
+        <option name="trendDisplayMode">absolute</option>
+        <option name="underLabel">Daily High Wind Gust</option>
+        <option name="unit">MPH</option>
+        <option name="unitPosition">after</option>
+        <option name="useColors">1</option>
+        <option name="useThousandSeparators">1</option>
+      </single>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <single>
+        <search>
+          <query>index=weather| top limit=1 "data.conditions{}.rainfall_daily"</query>
           <earliest>-2m</earliest>
           <latest>now</latest>
+          <sampleRatio>1</sampleRatio>
           <refresh>2m</refresh>
           <refreshType>delay</refreshType>
         </search>
         <option name="colorBy">value</option>
         <option name="colorMode">none</option>
         <option name="drilldown">none</option>
-        <option name="linkView">search</option>
-        <option name="numberPrecision">0</option>
-        <option name="rangeColors">["0x000000","0x65a637","0x6db7c6","0xf7bc38","0xf58f39","0xd93f3c"]</option>
-        <option name="rangeValues">[3,15,25,39,55]</option>
+        <option name="numberPrecision">0.00</option>
+        <option name="rangeColors">["0x006d9c","0xdc4e41"]</option>
+        <option name="rangeValues">[20]</option>
         <option name="refresh.display">progressbar</option>
         <option name="showSparkline">0</option>
         <option name="showTrendIndicator">0</option>
+        <option name="trellis.enabled">0</option>
+        <option name="trellis.scales.shared">1</option>
+        <option name="trellis.size">medium</option>
         <option name="trendColorInterpretation">standard</option>
         <option name="trendDisplayMode">absolute</option>
-        <option name="trendInterval">auto</option>
+        <option name="underLabel">Daily Rain</option>
+        <option name="unit">"</option>
+        <option name="unitPosition">after</option>
         <option name="useColors">1</option>
         <option name="useThousandSeparators">1</option>
       </single>
     </panel>
     <panel>
-      <title>Current Wind</title>
       <single>
-        <title>Direction</title>
         <search>
-          <query>index=weather "data.conditions{}.wind_dir_at_hi_speed_last_2_min"!=null| fields + "data.conditions{}.wind_dir_at_hi_speed_last_2_min"</query>
+          <query>index=weather| top limit=1 "data.conditions{}.rainfall_monthly" | eval n=exact(num /100)</query>
           <earliest>-2m</earliest>
           <latest>now</latest>
-          <refresh>2m</refresh>
+          <sampleRatio>1</sampleRatio>
+          <refresh>5m</refresh>
           <refreshType>delay</refreshType>
         </search>
         <option name="colorBy">value</option>
-        <option name="colorMode">block</option>
+        <option name="colorMode">none</option>
         <option name="drilldown">none</option>
-        <option name="linkView">search</option>
-        <option name="numberPrecision">0</option>
-        <option name="rangeColors">["0x65a637","0x6db7c6","0xf7bc38","0xf58f39","0xd93f3c","0x555"]</option>
-        <option name="rangeValues">[3,25,39,54,74]</option>
+        <option name="numberPrecision">0.00</option>
+        <option name="rangeColors">["0x006d9c","0xdc4e41"]</option>
+        <option name="rangeValues">[200]</option>
         <option name="refresh.display">progressbar</option>
         <option name="showSparkline">0</option>
         <option name="showTrendIndicator">0</option>
+        <option name="trellis.enabled">0</option>
+        <option name="trellis.scales.shared">1</option>
+        <option name="trellis.size">medium</option>
         <option name="trendColorInterpretation">standard</option>
         <option name="trendDisplayMode">absolute</option>
-        <option name="trendInterval">auto</option>
-        <option name="useColors">0</option>
+        <option name="underLabel">Monthly Rain</option>
+        <option name="unit">"</option>
+        <option name="unitPosition">after</option>
+        <option name="useColors">1</option>
         <option name="useThousandSeparators">1</option>
       </single>
     </panel>
-  </row>
-  <row>
     <panel>
-      <title>High Outside Temp</title>
       <single>
-        <title>Today</title>
         <search>
-          <query>index=weather | stats max("data.conditions{}.temp")</query>
-          <earliest>@d</earliest>
+          <query>index=weather| top limit=1 "data.conditions{}.rainfall_year"</query>
+          <earliest>-2m</earliest>
           <latest>now</latest>
+          <sampleRatio>1</sampleRatio>
           <refresh>2m</refresh>
           <refreshType>delay</refreshType>
         </search>
         <option name="colorBy">value</option>
         <option name="colorMode">none</option>
         <option name="drilldown">none</option>
-        <option name="linkView">search</option>
-        <option name="numberPrecision">0.0</option>
-        <option name="rangeColors">["0x65a637","0x6db7c6","0xf7bc38","0xf58f39","0xd93f3c"]</option>
-        <option name="rangeValues">[0,30,70,100]</option>
+        <option name="numberPrecision">0.00</option>
+        <option name="rangeColors">["0x006d9c","0x53a051"]</option>
+        <option name="rangeValues">[7]</option>
         <option name="refresh.display">progressbar</option>
         <option name="showSparkline">0</option>
         <option name="showTrendIndicator">0</option>
+        <option name="trellis.enabled">0</option>
+        <option name="trellis.scales.shared">1</option>
+        <option name="trellis.size">medium</option>
         <option name="trendColorInterpretation">standard</option>
         <option name="trendDisplayMode">absolute</option>
-        <option name="trendInterval">auto</option>
-        <option name="useColors">0</option>
-        <option name="useThousandSeparators">1</option>
-      </single>
-    </panel>
-    <panel>
-      <title>Low Outside Temp</title>
-      <single>
-        <title>Today</title>
-        <search>
-          <query>index=weather "data.conditions{}.temp"!=null "data.conditions{}.temp"&gt;-10 | stats min("data.conditions{}.temp")</query>
-          <earliest>@d</earliest>
-          <latest>now</latest>
-          <refresh>2m</refresh>
-          <refreshType>delay</refreshType>
-        </search>
-        <option name="colorBy">value</option>
-        <option name="colorMode">none</option>
-        <option name="drilldown">none</option>
-        <option name="linkView">search</option>
-        <option name="numberPrecision">0.0</option>
-        <option name="rangeColors">["0x65a637","0x6db7c6","0xf7bc38","0xf58f39","0xd93f3c"]</option>
-        <option name="rangeValues">[0,30,70,100]</option>
-        <option name="refresh.display">progressbar</option>
-        <option name="showSparkline">1</option>
-        <option name="showTrendIndicator">1</option>
-        <option name="trendColorInterpretation">standard</option>
-        <option name="trendDisplayMode">absolute</option>
-        <option name="trendInterval">auto</option>
-        <option name="useColors">0</option>
-        <option name="useThousandSeparators">1</option>
-      </single>
-    </panel>
-    <panel>
-      <title>High Wind Gust</title>
-      <single>
-        <title>Today</title>
-        <search>
-          <query>index=weather | stats max("data.conditions{}.wind_speed_last")</query>
-          <earliest>@d</earliest>
-          <latest>now</latest>
-          <refresh>2m</refresh>
-          <refreshType>delay</refreshType>
-        </search>
-        <option name="colorBy">value</option>
-        <option name="colorMode">none</option>
-        <option name="drilldown">none</option>
-        <option name="linkView">search</option>
-        <option name="numberPrecision">0.0</option>
-        <option name="rangeColors">["0x000000","0x65a637","0x6db7c6","0xf7bc38","0xf58f39","0xd93f3c"]</option>
-        <option name="rangeValues">[3,15,25,39,55]</option>
-        <option name="refresh.display">progressbar</option>
-        <option name="showSparkline">1</option>
-        <option name="showTrendIndicator">1</option>
-        <option name="trendColorInterpretation">standard</option>
-        <option name="trendDisplayMode">absolute</option>
-        <option name="trendInterval">auto</option>
-        <option name="useColors">1</option>
-        <option name="useThousandSeparators">1</option>
-      </single>
-    </panel>
-    <panel>
-      <title>High Humidity</title>
-      <single>
-        <title>Today</title>
-        <search>
-          <query>index=weather | stats max("data.conditions{}.hum")</query>
-          <earliest>@d</earliest>
-          <latest>now</latest>
-          <refresh>2m</refresh>
-          <refreshType>delay</refreshType>
-        </search>
-        <option name="colorBy">value</option>
-        <option name="colorMode">none</option>
-        <option name="drilldown">none</option>
-        <option name="linkView">search</option>
-        <option name="numberPrecision">0</option>
-        <option name="rangeColors">["0x65a637","0x6db7c6","0xf7bc38","0xf58f39","0xd93f3c"]</option>
-        <option name="rangeValues">[0,30,70,100]</option>
-        <option name="refresh.display">progressbar</option>
-        <option name="showSparkline">1</option>
-        <option name="showTrendIndicator">1</option>
-        <option name="trendColorInterpretation">standard</option>
-        <option name="trendDisplayMode">absolute</option>
-        <option name="trendInterval">auto</option>
-        <option name="unit">%</option>
-        <option name="useColors">0</option>
-        <option name="useThousandSeparators">1</option>
-      </single>
-    </panel>
-    <panel>
-      <title>Low Humidity</title>
-      <single>
-        <title>Today</title>
-        <search>
-          <query>index=weather | stats min("data.conditions{}.hum")</query>
-          <earliest>@d</earliest>
-          <latest>now</latest>
-          <refresh>2m</refresh>
-          <refreshType>delay</refreshType>
-        </search>
-        <option name="colorBy">value</option>
-        <option name="colorMode">none</option>
-        <option name="drilldown">none</option>
-        <option name="linkView">search</option>
-        <option name="numberPrecision">0</option>
-        <option name="rangeColors">["0x65a637","0x6db7c6","0xf7bc38","0xf58f39","0xd93f3c"]</option>
-        <option name="rangeValues">[0,30,70,100]</option>
-        <option name="refresh.display">progressbar</option>
-        <option name="showSparkline">1</option>
-        <option name="showTrendIndicator">1</option>
-        <option name="trendColorInterpretation">standard</option>
-        <option name="trendDisplayMode">absolute</option>
-        <option name="trendInterval">auto</option>
-        <option name="unit">%</option>
-        <option name="useColors">0</option>
-        <option name="useThousandSeparators">1</option>
-      </single>
-    </panel>
-  </row>
-  <row>
-    <panel>
-      <title>All-Time Record High Temp</title>
-      <single>
-        <search>
-          <query>index=weather | stats max("data.conditions{}.temp")</query>
-          <earliest>0</earliest>
-          <latest></latest>
-          <refresh>1h</refresh>
-          <refreshType>delay</refreshType>
-        </search>
-        <option name="colorBy">value</option>
-        <option name="colorMode">none</option>
-        <option name="drilldown">none</option>
-        <option name="linkView">search</option>
-        <option name="numberPrecision">0.0</option>
-        <option name="rangeColors">["0x6db7c6","0x53a051","0xf7bc38","0xf58f39","0xd93f3c"]</option>
-        <option name="rangeValues">[32,90,105,115]</option>
-        <option name="refresh.display">progressbar</option>
-        <option name="showSparkline">1</option>
-        <option name="showTrendIndicator">1</option>
-        <option name="trendColorInterpretation">standard</option>
-        <option name="trendDisplayMode">absolute</option>
-        <option name="trendInterval">auto</option>
-        <option name="useColors">1</option>
-        <option name="useThousandSeparators">1</option>
-      </single>
-    </panel>
-    <panel>
-      <title>All-Time Record Low Temp</title>
-      <single>
-        <search>
-          <query>index=weather "data.conditions{}.temp"!=null "data.conditions{}.temp"&gt;-10 | stats min("data.conditions{}.temp")</query>
-          <earliest>0</earliest>
-          <latest></latest>
-          <refresh>1h</refresh>
-          <refreshType>delay</refreshType>
-        </search>
-        <option name="colorBy">value</option>
-        <option name="colorMode">none</option>
-        <option name="drilldown">none</option>
-        <option name="linkView">search</option>
-        <option name="numberPrecision">0.0</option>
-        <option name="rangeColors">["0x6db7c6","0x53a051","0xf7bc38","0xf58f39","0xd93f3c"]</option>
-        <option name="rangeValues">[32,90,105,115]</option>
-        <option name="refresh.display">progressbar</option>
-        <option name="showSparkline">1</option>
-        <option name="showTrendIndicator">1</option>
-        <option name="trendColorInterpretation">standard</option>
-        <option name="trendDisplayMode">absolute</option>
-        <option name="trendInterval">auto</option>
-        <option name="useColors">1</option>
-        <option name="useThousandSeparators">1</option>
-      </single>
-    </panel>
-    <panel>
-      <title>All-Time Record Wind Gust</title>
-      <single>
-        <search>
-          <query>index=weather | stats max("data.conditions{}.wind_speed_last")</query>
-          <earliest>0</earliest>
-          <latest></latest>
-          <refresh>1h</refresh>
-          <refreshType>delay</refreshType>
-        </search>
-        <option name="colorBy">value</option>
-        <option name="colorMode">none</option>
-        <option name="drilldown">none</option>
-        <option name="linkView">search</option>
-        <option name="numberPrecision">0</option>
-        <option name="rangeColors">["0x000000","0x65a637","0x6db7c6","0xf7bc38","0xf58f39","0xd93f3c"]</option>
-        <option name="rangeValues">[3,15,25,39,55]</option>
-        <option name="refresh.display">progressbar</option>
-        <option name="showSparkline">1</option>
-        <option name="showTrendIndicator">1</option>
-        <option name="trendColorInterpretation">standard</option>
-        <option name="trendDisplayMode">absolute</option>
-        <option name="trendInterval">auto</option>
+        <option name="underLabel">Yearly Rain</option>
+        <option name="unit">"</option>
+        <option name="unitPosition">after</option>
         <option name="useColors">1</option>
         <option name="useThousandSeparators">1</option>
       </single>
@@ -371,196 +406,28 @@
   </row>
   <row>
     <panel>
-      <title>Outside Temperature</title>
+      <title>Hourly Wind Speed</title>
       <chart>
-        <title>Last 24h</title>
         <search>
-          <query>index=weather | timechart max("data.conditions{}.temp") as "Temperature" max("data.conditions{}.dew_point") as "Dew Point"</query>
-          <earliest>rt-24h</earliest>
-          <latest>rtnow</latest>
-          <refresh>2m</refresh>
+          <query>index=weather| timechart span=15m avg("data.conditions{}.wind_speed_last") as "Average Wind Speed" max("data.conditions{}.wind_speed_last") as "Max Wind Speed"</query>
+          <earliest>@d</earliest>
+          <latest>now</latest>
+          <sampleRatio>1</sampleRatio>
+          <refresh>5m</refresh>
           <refreshType>delay</refreshType>
         </search>
-        <fields>["host","source","sourcetype"]</fields>
         <option name="charting.axisLabelsX.majorLabelStyle.overflowMode">ellipsisNone</option>
-        <option name="charting.axisLabelsX.majorLabelStyle.rotation">0</option>
+        <option name="charting.axisLabelsX.majorLabelStyle.rotation">45</option>
+        <option name="charting.axisTitleX.text">Date</option>
         <option name="charting.axisTitleX.visibility">collapsed</option>
-        <option name="charting.axisTitleY.text">F</option>
+        <option name="charting.axisTitleY.text">MPH</option>
         <option name="charting.axisTitleY.visibility">visible</option>
         <option name="charting.axisTitleY2.visibility">visible</option>
+        <option name="charting.axisX.abbreviation">none</option>
         <option name="charting.axisX.scale">linear</option>
+        <option name="charting.axisY.abbreviation">none</option>
         <option name="charting.axisY.scale">linear</option>
-        <option name="charting.axisY2.enabled">0</option>
-        <option name="charting.axisY2.scale">inherit</option>
-        <option name="charting.chart">line</option>
-        <option name="charting.chart.bubbleMaximumSize">50</option>
-        <option name="charting.chart.bubbleMinimumSize">10</option>
-        <option name="charting.chart.bubbleSizeBy">area</option>
-        <option name="charting.chart.nullValueMode">gaps</option>
-        <option name="charting.chart.showDataLabels">none</option>
-        <option name="charting.chart.sliceCollapsingThreshold">0.01</option>
-        <option name="charting.chart.stackMode">default</option>
-        <option name="charting.chart.style">shiny</option>
-        <option name="charting.drilldown">all</option>
-        <option name="charting.layout.splitSeries">0</option>
-        <option name="charting.layout.splitSeries.allowIndependentYRanges">0</option>
-        <option name="charting.legend.labelStyle.overflowMode">ellipsisStart</option>
-        <option name="charting.legend.placement">top</option>
-        <option name="refresh.display">progressbar</option>
-      </chart>
-    </panel>
-    <panel>
-      <title>Barometric Pressure</title>
-      <chart>
-        <title>Last 24h</title>
-        <search>
-          <query>index=weather | timechart max("data.conditions{}.bar_absolute") as "Barometric Pressure"</query>
-          <earliest>-24h@h</earliest>
-          <latest>now</latest>
-          <refresh>2m</refresh>
-          <refreshType>delay</refreshType>
-        </search>
-        <option name="charting.axisLabelsX.majorLabelStyle.overflowMode">ellipsisNone</option>
-        <option name="charting.axisLabelsX.majorLabelStyle.rotation">0</option>
-        <option name="charting.axisTitleX.visibility">collapsed</option>
-        <option name="charting.axisTitleY.text">inHG</option>
-        <option name="charting.axisTitleY.visibility">visible</option>
-        <option name="charting.axisTitleY2.visibility">visible</option>
-        <option name="charting.axisX.scale">linear</option>
-        <option name="charting.axisY.scale">linear</option>
-        <option name="charting.axisY2.enabled">0</option>
-        <option name="charting.axisY2.scale">inherit</option>
-        <option name="charting.chart">line</option>
-        <option name="charting.chart.bubbleMaximumSize">50</option>
-        <option name="charting.chart.bubbleMinimumSize">10</option>
-        <option name="charting.chart.bubbleSizeBy">area</option>
-        <option name="charting.chart.nullValueMode">gaps</option>
-        <option name="charting.chart.showDataLabels">none</option>
-        <option name="charting.chart.sliceCollapsingThreshold">0.01</option>
-        <option name="charting.chart.stackMode">default</option>
-        <option name="charting.chart.style">shiny</option>
-        <option name="charting.drilldown">all</option>
-        <option name="charting.layout.splitSeries">0</option>
-        <option name="charting.layout.splitSeries.allowIndependentYRanges">0</option>
-        <option name="charting.legend.labelStyle.overflowMode">ellipsisMiddle</option>
-        <option name="charting.legend.placement">top</option>
-        <option name="refresh.display">progressbar</option>
-      </chart>
-    </panel>
-    <panel>
-      <title>Windspeed</title>
-      <chart>
-        <title>Last 24h</title>
-        <search>
-          <query>index=weather | timechart max("data.conditions{}.wind_speed_last") as "Wind Speed"</query>
-          <earliest>-24h@h</earliest>
-          <latest>now</latest>
-          <refresh>2m</refresh>
-          <refreshType>delay</refreshType>
-        </search>
-        <option name="charting.axisLabelsX.majorLabelStyle.overflowMode">ellipsisNone</option>
-        <option name="charting.axisLabelsX.majorLabelStyle.rotation">0</option>
-        <option name="charting.axisTitleX.visibility">visible</option>
-        <option name="charting.axisTitleY.visibility">visible</option>
-        <option name="charting.axisTitleY2.visibility">visible</option>
-        <option name="charting.axisX.scale">linear</option>
-        <option name="charting.axisY.scale">linear</option>
-        <option name="charting.axisY2.enabled">0</option>
-        <option name="charting.axisY2.scale">inherit</option>
-        <option name="charting.chart">line</option>
-        <option name="charting.chart.bubbleMaximumSize">50</option>
-        <option name="charting.chart.bubbleMinimumSize">10</option>
-        <option name="charting.chart.bubbleSizeBy">area</option>
-        <option name="charting.chart.nullValueMode">gaps</option>
-        <option name="charting.chart.showDataLabels">none</option>
-        <option name="charting.chart.sliceCollapsingThreshold">0.01</option>
-        <option name="charting.chart.stackMode">default</option>
-        <option name="charting.chart.style">shiny</option>
-        <option name="charting.drilldown">all</option>
-        <option name="charting.layout.splitSeries">0</option>
-        <option name="charting.layout.splitSeries.allowIndependentYRanges">0</option>
-        <option name="charting.legend.labelStyle.overflowMode">ellipsisMiddle</option>
-        <option name="charting.legend.placement">top</option>
-        <option name="refresh.display">progressbar</option>
-      </chart>
-    </panel>
-  </row>
-  <row>
-    <panel>
-      <title>Rainfall</title>
-      <single>
-        <title>Today</title>
-        <search>
-          <query>index=weather | stats max("data.conditions{}.rainfall_daily")</query>
-          <earliest>@d</earliest>
-          <latest>now</latest>
-          <refresh>2m</refresh>
-          <refreshType>delay</refreshType>
-        </search>
-        <option name="colorBy">value</option>
-        <option name="colorMode">none</option>
-        <option name="drilldown">none</option>
-        <option name="linkView">search</option>
-        <option name="numberPrecision">0.00</option>
-        <option name="rangeColors">["0x65a637","0x6db7c6","0xf7bc38","0xf58f39","0xd93f3c"]</option>
-        <option name="rangeValues">[0,30,70,100]</option>
-        <option name="refresh.display">progressbar</option>
-        <option name="showSparkline">1</option>
-        <option name="showTrendIndicator">1</option>
-        <option name="trendColorInterpretation">standard</option>
-        <option name="trendDisplayMode">absolute</option>
-        <option name="trendInterval">auto</option>
-        <option name="useColors">0</option>
-        <option name="useThousandSeparators">1</option>
-      </single>
-    </panel>
-    <panel>
-      <title>Rainfall</title>
-      <single>
-        <title>Year to Date</title>
-        <search>
-          <query>index=weather | stats sum("data.conditions{}.rainfall_daily")</query>
-          <earliest>@y</earliest>
-          <latest>now</latest>
-          <refresh>2m</refresh>
-          <refreshType>delay</refreshType>
-        </search>
-        <option name="colorBy">value</option>
-        <option name="colorMode">none</option>
-        <option name="drilldown">none</option>
-        <option name="linkView">search</option>
-        <option name="numberPrecision">0.00</option>
-        <option name="rangeColors">["0x65a637","0x6db7c6","0xf7bc38","0xf58f39","0xd93f3c"]</option>
-        <option name="rangeValues">[0,30,70,100]</option>
-        <option name="refresh.display">progressbar</option>
-        <option name="showSparkline">1</option>
-        <option name="showTrendIndicator">1</option>
-        <option name="trendColorInterpretation">standard</option>
-        <option name="trendDisplayMode">absolute</option>
-        <option name="trendInterval">auto</option>
-        <option name="useColors">0</option>
-        <option name="useThousandSeparators">1</option>
-      </single>
-    </panel>
-  </row>
-  <row>
-    <panel>
-      <title>Yearly Rain</title>
-      <chart>
-        <search>
-          <query>index=weather | timechart max("data.conditions{}.rainfall_daily") as "Daily Rainfall"</query>
-          <earliest>@y</earliest>
-          <latest>now</latest>
-          <refresh>2m</refresh>
-          <refreshType>delay</refreshType>
-        </search>
-        <option name="charting.axisLabelsX.majorLabelStyle.overflowMode">ellipsisNone</option>
-        <option name="charting.axisLabelsX.majorLabelStyle.rotation">0</option>
-        <option name="charting.axisTitleX.visibility">visible</option>
-        <option name="charting.axisTitleY.visibility">visible</option>
-        <option name="charting.axisTitleY2.visibility">visible</option>
-        <option name="charting.axisX.scale">linear</option>
-        <option name="charting.axisY.scale">linear</option>
+        <option name="charting.axisY2.abbreviation">none</option>
         <option name="charting.axisY2.enabled">0</option>
         <option name="charting.axisY2.scale">inherit</option>
         <option name="charting.chart">column</option>
@@ -572,12 +439,114 @@
         <option name="charting.chart.sliceCollapsingThreshold">0.01</option>
         <option name="charting.chart.stackMode">default</option>
         <option name="charting.chart.style">shiny</option>
-        <option name="charting.drilldown">all</option>
+        <option name="charting.drilldown">none</option>
         <option name="charting.layout.splitSeries">0</option>
         <option name="charting.layout.splitSeries.allowIndependentYRanges">0</option>
         <option name="charting.legend.labelStyle.overflowMode">ellipsisMiddle</option>
+        <option name="charting.legend.mode">standard</option>
         <option name="charting.legend.placement">top</option>
+        <option name="charting.lineWidth">2</option>
         <option name="refresh.display">progressbar</option>
+        <option name="trellis.enabled">0</option>
+        <option name="trellis.scales.shared">1</option>
+        <option name="trellis.size">medium</option>
+      </chart>
+    </panel>
+    <panel>
+      <title>Average Daily Temp and Dew Point</title>
+      <chart>
+        <search>
+          <query>index=weather| timechart span=5m avg("data.conditions{}.temp") as "Temp" avg("data.conditions{}.dew_point") as "Dew Point"</query>
+          <earliest>@d</earliest>
+          <latest>now</latest>
+          <sampleRatio>1</sampleRatio>
+          <refresh>5m</refresh>
+          <refreshType>delay</refreshType>
+        </search>
+        <option name="charting.axisLabelsX.majorLabelStyle.overflowMode">ellipsisNone</option>
+        <option name="charting.axisLabelsX.majorLabelStyle.rotation">-45</option>
+        <option name="charting.axisTitleX.text">Date</option>
+        <option name="charting.axisTitleX.visibility">collapsed</option>
+        <option name="charting.axisTitleY.text">Temperature</option>
+        <option name="charting.axisTitleY.visibility">visible</option>
+        <option name="charting.axisTitleY2.visibility">visible</option>
+        <option name="charting.axisX.abbreviation">none</option>
+        <option name="charting.axisX.scale">linear</option>
+        <option name="charting.axisY.abbreviation">none</option>
+        <option name="charting.axisY.maximumNumber">130</option>
+        <option name="charting.axisY.minimumNumber">-5</option>
+        <option name="charting.axisY.scale">linear</option>
+        <option name="charting.axisY2.abbreviation">none</option>
+        <option name="charting.axisY2.enabled">0</option>
+        <option name="charting.axisY2.scale">inherit</option>
+        <option name="charting.chart">line</option>
+        <option name="charting.chart.bubbleMaximumSize">50</option>
+        <option name="charting.chart.bubbleMinimumSize">10</option>
+        <option name="charting.chart.bubbleSizeBy">area</option>
+        <option name="charting.chart.nullValueMode">connect</option>
+        <option name="charting.chart.showDataLabels">none</option>
+        <option name="charting.chart.sliceCollapsingThreshold">0.01</option>
+        <option name="charting.chart.stackMode">default</option>
+        <option name="charting.chart.style">shiny</option>
+        <option name="charting.drilldown">none</option>
+        <option name="charting.layout.splitSeries">0</option>
+        <option name="charting.layout.splitSeries.allowIndependentYRanges">0</option>
+        <option name="charting.legend.labelStyle.overflowMode">ellipsisMiddle</option>
+        <option name="charting.legend.mode">standard</option>
+        <option name="charting.legend.placement">top</option>
+        <option name="charting.lineWidth">2</option>
+        <option name="refresh.display">progressbar</option>
+        <option name="trellis.enabled">0</option>
+        <option name="trellis.scales.shared">1</option>
+        <option name="trellis.size">medium</option>
+      </chart>
+    </panel>
+    <panel>
+      <title>Average Daily Barometer</title>
+      <chart>
+        <title>Last 6 Hours</title>
+        <search>
+          <query>index=weather| timechart span=1m avg("data.conditions{}.bar_absolute") as "Barometric Pressure"</query>
+          <earliest>-6h</earliest>
+          <latest>now</latest>
+          <sampleRatio>1</sampleRatio>
+          <refresh>5m</refresh>
+          <refreshType>delay</refreshType>
+        </search>
+        <option name="charting.axisLabelsX.majorLabelStyle.overflowMode">ellipsisNone</option>
+        <option name="charting.axisLabelsX.majorLabelStyle.rotation">-45</option>
+        <option name="charting.axisTitleX.text">Date</option>
+        <option name="charting.axisTitleX.visibility">visible</option>
+        <option name="charting.axisTitleY.text">Temperature</option>
+        <option name="charting.axisTitleY.visibility">visible</option>
+        <option name="charting.axisTitleY2.visibility">visible</option>
+        <option name="charting.axisX.abbreviation">none</option>
+        <option name="charting.axisX.scale">linear</option>
+        <option name="charting.axisY.abbreviation">none</option>
+        <option name="charting.axisY.scale">linear</option>
+        <option name="charting.axisY2.abbreviation">none</option>
+        <option name="charting.axisY2.enabled">0</option>
+        <option name="charting.axisY2.scale">inherit</option>
+        <option name="charting.chart">line</option>
+        <option name="charting.chart.bubbleMaximumSize">50</option>
+        <option name="charting.chart.bubbleMinimumSize">10</option>
+        <option name="charting.chart.bubbleSizeBy">area</option>
+        <option name="charting.chart.nullValueMode">connect</option>
+        <option name="charting.chart.showDataLabels">minmax</option>
+        <option name="charting.chart.sliceCollapsingThreshold">0.01</option>
+        <option name="charting.chart.stackMode">default</option>
+        <option name="charting.chart.style">shiny</option>
+        <option name="charting.drilldown">none</option>
+        <option name="charting.layout.splitSeries">0</option>
+        <option name="charting.layout.splitSeries.allowIndependentYRanges">0</option>
+        <option name="charting.legend.labelStyle.overflowMode">ellipsisMiddle</option>
+        <option name="charting.legend.mode">standard</option>
+        <option name="charting.legend.placement">top</option>
+        <option name="charting.lineWidth">2</option>
+        <option name="refresh.display">progressbar</option>
+        <option name="trellis.enabled">0</option>
+        <option name="trellis.scales.shared">1</option>
+        <option name="trellis.size">medium</option>
       </chart>
     </panel>
   </row>
