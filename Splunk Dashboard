@@ -313,8 +313,8 @@
     <panel>
       <single>
         <search>
-          <query>index=weather| top limit=1 "data.conditions{}.rainfall_daily"</query>
-          <earliest>-2m</earliest>
+          <query>index=weather | eval rainfall_daily = 'data.conditions{}.rainfall_daily'/100 | table rainfall_daily</query>
+          <earliest>-1m</earliest>
           <latest>now</latest>
           <sampleRatio>1</sampleRatio>
           <refresh>2m</refresh>
@@ -344,8 +344,8 @@
     <panel>
       <single>
         <search>
-          <query>index=weather| top limit=1 "data.conditions{}.rainfall_monthly" | eval n=exact(num /100)</query>
-          <earliest>-2m</earliest>
+          <query>index=weather | eval rainfall_monthly = 'data.conditions{}.rainfall_monthly'/100 | table rainfall_monthly</query>
+          <earliest>-1m</earliest>
           <latest>now</latest>
           <sampleRatio>1</sampleRatio>
           <refresh>5m</refresh>
@@ -375,8 +375,8 @@
     <panel>
       <single>
         <search>
-          <query>index=weather| top limit=1 "data.conditions{}.rainfall_year"</query>
-          <earliest>-2m</earliest>
+          <query>index=weather earliest=-1m | eval rainfall_year = 'data.conditions{}.rainfall_year'/100 | table rainfall_year</query>
+          <earliest>-1m</earliest>
           <latest>now</latest>
           <sampleRatio>1</sampleRatio>
           <refresh>2m</refresh>
@@ -455,9 +455,10 @@
     <panel>
       <title>Average Daily Temp and Dew Point</title>
       <chart>
+        <title>Last 24 Hours</title>
         <search>
           <query>index=weather| timechart span=5m avg("data.conditions{}.temp") as "Temp" avg("data.conditions{}.dew_point") as "Dew Point"</query>
-          <earliest>@d</earliest>
+          <earliest>-24h@h</earliest>
           <latest>now</latest>
           <sampleRatio>1</sampleRatio>
           <refresh>5m</refresh>
@@ -473,8 +474,6 @@
         <option name="charting.axisX.abbreviation">none</option>
         <option name="charting.axisX.scale">linear</option>
         <option name="charting.axisY.abbreviation">none</option>
-        <option name="charting.axisY.maximumNumber">130</option>
-        <option name="charting.axisY.minimumNumber">-5</option>
         <option name="charting.axisY.scale">linear</option>
         <option name="charting.axisY2.abbreviation">none</option>
         <option name="charting.axisY2.enabled">0</option>
